@@ -1,0 +1,169 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(images/bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+
+.card{
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 300px;
+  border: 2px solid #4CAF50;
+  transition: all 0.3s ease;
+}
+
+.card:hover{
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid #4CAF50;
+}
+
+.profile-info{
+  font-size: 22px;
+  margin-top: 15px;
+  color: hsl(0, 14%, 99%);
+  text-shadow: 
+  0 0 10px cyan,
+  0 0 20px cyan,
+  0 0 40px cyan,
+  0 0 80px cyan;
+}
+
+.profile-info p{
+  font-size: 14px;
+  color: hsl(0, 14%, 99%);
+  margin: 10px 0;
+}
+
+.social-link a{
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 24px;
+  color: #4CAF50;
+  transition: color 0.3s ease;
+}
+
+.social-link a:hover{
+  color: #333;
+}
+
+/*.read-more-btn{
+ background-color: #4CAF50;
+ color: #fff;
+ padding: 10px 20px;
+ border: none;
+ border-radius: 5px;
+ font-size: 16px;
+ cursor: pointer;
+ margin-top: 15px;
+}
+
+.read-more-btn:hover{
+  background-color: #333;
+}*/
+
+@property --a {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+.card button {
+  --a: 0%;
+  --hue: 170deg;
+  --x: 50;
+  --y: 50;
+  --button: hsl(var(--hue), 66%, 66%);
+  --edge: 20px;
+  --size: 1.5em;
+  
+  background: transparent;
+  color: hsla(var(--hue), 80%, 30%, 0.7);
+  font-size: 1.1em;
+  position: relative;
+  padding: calc(var(--size)) calc(var(--size)*1.2);
+  animation: color 20s linear infinite both;
+  transition: 
+      --a .5s ease-in-out, 
+      scale var(--spring-duration) var(--spring-easing);
+  scale: 0.92;
+  isolation: isolate;
+  border: none;
+
+  &:hover {
+      --a: 100%;
+      transition-duration: .5s, 1s;
+      box-shadow: none;
+      border: inherit;
+      opacity: 1;
+      scale: 1;
+  }
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  inset: 0em;
+  filter: blur(12px) url(#goo) drop-shadow(0 .25em .5em hsla(0deg, 0%, 0%, 0.8)); 
+  background-image:
+      linear-gradient(0deg,var(--button),var(--button)),
+      radial-gradient(
+          40% 70% at calc(var(--x) * 1%) calc(var(--y) * 1%),
+          hsla(var(--hue), 77%, 77%, var(--a)) 0%,
+          transparent 90%
+      );
+  background-clip: content-box, border-box;
+  padding: 18px;
+  z-index: -1;
+  border: inherit;
+  animation: color 20s linear infinite both;
+}
+
+@property --hue {
+  syntax: "<angle>";
+  initial-value: 170deg;
+  inherits: false;
+}
+
+@keyframes color {
+  from {
+      --hue: 170deg;
+  }
+  to {
+      --hue: 530deg;
+  }
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+  .card {
+    width: 80%;
+  }
+
+  .profile-image img {
+    width: 80px;
+    height: 80px;
+  }
+}
